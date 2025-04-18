@@ -1,9 +1,7 @@
 package ru.ibs.tests;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import io.qameta.allure.Step;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -39,6 +37,10 @@ public class TrainingApplineTest {
 
 
     @Test
+    @Step ("Test 1")
+    @DisplayName("Тест 1")
+
+
     public void test() throws InterruptedException {
 
         WebElement loginForm = driver.findElement(By.xpath("//form[@id='login-form']//fieldset"));
