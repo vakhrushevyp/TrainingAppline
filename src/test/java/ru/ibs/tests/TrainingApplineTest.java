@@ -1,52 +1,24 @@
 package ru.ibs.tests;
 
-import io.qameta.allure.Step;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import ru.ibs.tests.base.BaseTests;
 
-import java.time.Duration;
-
-public class TrainingApplineTest {
+public class TrainingApplineTest extends BaseTests {
 
 
-    static WebDriver driver;
-    static WebDriverWait wait;
-
-    @BeforeAll
-    public static void beforeAll() {
-        ChromeOptions options = new ChromeOptions();
-        /*
-        options.addArguments("--ignore-certificate-errors");
-        System.setProperty("webdriver.chrome.driver","src/test/resources/chromedriver.exe");
-      options.setBinary("C:\\Users\\VAKHRUSHEV\\AppData\\Local\\Yandex\\YandexBrowser\\Application\\browser.exe");
-        */
-        driver = new ChromeDriver(options);
-        driver.manage().window().maximize();
-        driver.get("http://training.appline.ru/user/login");
-        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10), Duration.ofSeconds(2));
-
-    }
 
 
     @Test
-    @Step ("Test 1")
     @DisplayName("Тест 1")
-
 
     public void test() throws InterruptedException {
 
-        WebElement loginForm = driver.findElement(By.xpath("//form[@id='login-form']//fieldset"));
-        loginForm.findElement(By.xpath(".//input[@id='prependedInput']")).sendKeys("Taraskina Valeriya");
-        loginForm.findElement(By.xpath(".//input[@id='prependedInput2']")).sendKeys("testing");
-        loginForm.findElement(By.xpath(".//button[@id='_submit']")).click();
+
 
         WebElement header = driver.findElement(By.xpath("//h1[@class='oro-subtitle']"));
 
@@ -141,11 +113,7 @@ public class TrainingApplineTest {
 
     }
 
-    @AfterAll
-    public static void afterAll() {
 
-        driver.quit();
-    }
 
 
 }
