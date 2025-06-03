@@ -6,11 +6,11 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import ru.ibs.framework.pages.AuthPage;
+import ru.ibs.framework.pages.HomePage;
 import ru.ibs.tests.base.BaseTests;
 
 public class TrainingApplineTest extends BaseTests {
-
-
 
 
     @Test
@@ -18,17 +18,16 @@ public class TrainingApplineTest extends BaseTests {
 
     public void test() throws InterruptedException {
 
+        AuthPage authPage = new AuthPage(driver);
+        HomePage homePage = new HomePage(driver);
 
 
-        WebElement header = driver.findElement(By.xpath("//h1[@class='oro-subtitle']"));
 
-        Assertions.assertEquals("Панель быстрого запуска", header.getText(), "Текст заголовка не соответствует");
+        authPage.authorization("Taraskina Valeriya", "testing");
+        homePage.checkHeader("Панель быстрого запуска");
+        homePage.selectMainMenu("Расходы");
+        homePage.selectSubMenu("Командировки");
 
-        WebElement menuRashody = driver.findElement(By.xpath("//ul[contains(@class, 'main-menu')]/li/a/span[text()='Расходы']"));
-        menuRashody.click();
-
-        WebElement subMenuRashody = menuRashody.findElement(By.xpath("./../following-sibling::*//li/a/span[text()='Командировки']"));
-        subMenuRashody.click();
 
         WebElement headerAllTrips = driver.findElement(By.xpath("//h1[@class='oro-subtitle']"));
 

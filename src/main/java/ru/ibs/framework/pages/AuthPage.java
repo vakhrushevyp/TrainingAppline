@@ -7,7 +7,6 @@ import org.openqa.selenium.support.PageFactory;
 
 public class AuthPage {
 
-    WebDriver driver;
 
     @FindBy(xpath = "//form[@id='login-form']//fieldset//input[@id='prependedInput']")
     WebElement inputLogin;
@@ -26,6 +25,7 @@ public class AuthPage {
         inputLogin.sendKeys(login);
         inputPass.sendKeys(password);
         loginButton.click();
+
         }
 
 }

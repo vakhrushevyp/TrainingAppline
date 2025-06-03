@@ -11,13 +11,15 @@ import java.time.Duration;
 
 public class BaseTests {
 
-    protected WebDriver driver;
-    protected WebDriverWait wait;
+    protected static WebDriver driver;
+    protected static WebDriverWait wait;
 
     @BeforeAll
-    public void beforeAll() {
+    public static void beforeAll() {
         ChromeOptions options = new ChromeOptions();
+        options.addArguments("--guest");
         /*
+
         options.addArguments("--ignore-certificate-errors");
         System.setProperty("webdriver.chrome.driver","src/test/resources/chromedriver.exe");
         options.setBinary("C:\\Users\\VAKHRUSHEV\\AppData\\Local\\Yandex\\YandexBrowser\\Application\\browser.exe");
@@ -29,12 +31,13 @@ public class BaseTests {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
         wait = new WebDriverWait(driver, Duration.ofSeconds(10), Duration.ofSeconds(2));
 
+
     }
 
 
 
     @AfterAll
-    public void afterAll() {
+    public static void afterAll() {
         driver.quit();
     }
 
